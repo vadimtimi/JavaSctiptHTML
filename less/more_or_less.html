@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Больше или меньше</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<script type="text/javascript">
+	var int_a = +prompt("Введите первое число:");
+	var int_b = +prompt("Введите второе число:");
+
+	if(int_a > int_b) {
+		var max  = int_a;
+		alert("Первое число: " + max + " больше второго");
+	}else if(int_a < int_b){
+		var max  = int_b;
+		alert("Второе число: " + max + " больше первого");
+	}else {
+		var max  = int_b;
+		alert("Числа равны");
+	}
+</script>
+
+</body>
+</html>
+
