@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var answer = getRandomInt(100);
+	var maxCount = 7;
+	var tyCount = 0;
+
+	var userAnswer = +prompt("Я загадал число, поробуй отгадай. Введите число:");
+
+	if(isNumeric(userAnswer)) {
+		//игрок не ввёл число
+		alert("Со мной не хотят играть. До скорого.");
+	} else {
+		//начинаем играть
+
+		for (tyCount = 1; tyCount < maxCount; tyCount++) {
+
+			if(userAnswer == answer) {
+				alert("Вы правильно угадали загаданное число: " + answer);
+				break;
+			} else if(userAnswer > answer) {
+				alert("Загаданное число меньше");
+			} else if(userAnswer < answer) {
+				alert("Загаданное число больше");
+			}
+
+			userAnswer = +prompt("Попробуйте еще (Осталось " + (maxCount - tyCount) + "):");
+		}
+	}
+
+	if(tyCount == maxCount) {
+		alert("Вы проиграли в этот раз.");
+	}
+	alert("Загаданное число: " + answer);
+
+	function getRandomInt(max) {
+	  return Math.floor(Math.random() * Math.floor(max));
+	}
+	function isNumeric(n) {
+		var res = (isNaN(n) || n < 0);
+		return res;
+	}
+</script>

@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<script type="text/javascript">
+	
+	var count_hello = +prompt("Сколько раз вывести приветствие?");
+
+	if(isNumber(count_hello)) {
+		for(var i = 0; i < count_hello; i ++) {
+			var hello_txt = "Приветствие " + (i+1);
+			var txt = "<div style='color:red'>" + hello_txt + "</div>";
+			document.write(txt);
+		}
+	}else {
+		alert("Введено не числовое значение!")
+	}
+
+	function isNumber(n) { 
+		return /^-?[\d.]+(?:e-?\d+)?$/.test(n); 
+	}
+</script>

@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<script type="text/javascript">
+	
+	var num = 0;
+
+	do{
+		num = +prompt("Пожалуйста, введите число:");
+	}
+	while(isNumber(num) == true)
+
+	var sum = 0;
+	for(var i = 0; i <= num; i++) {
+		sum = sum+i;
+		print_text(sum);
+	}
+
+	//+++++++++++++++
+	// функции
+	function isNumber(n) { 
+		var res = (isNaN(n) || n < 0);
+		return  res;
+	}
+
+	function print_text(txt) { 
+		var txt = "<div style='color:red'>" + txt + "</div>";
+	 	document.write(txt);
+	}
+	//функции
+	//+++++++++++++++
+</script>
