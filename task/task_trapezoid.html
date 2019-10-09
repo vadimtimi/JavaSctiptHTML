@@ -1,0 +1,38 @@
+ <html>
+ <head>
+ <title>
+ </title>
+ </head>
+ <body>
+ <center>
+ 
+<form name="myform">
+ <br/>Основание трапеции a: <input name="mytext1" type="text" size="10">
+ <br/>Основание трапеции b: <input name="mytext2" type="text" size="10">
+ <br/>Высота трапеции h: <input name="mytext3" type="text" size="10 ">
+ <br/><input type="button" value=" Подсчет площади трапеции " onClick="clickButton()">
+</form>
+
+ <script type="text/javascript">
+
+function clickButton() {
+  var a = document.myform.mytext1.value;
+  var b = document.myform.mytext2.value;
+  var h = document.myform.mytext3.value;
+
+  a = parseInt(a);	
+  b = parseInt(b);	
+  h = parseInt(h);	  
+
+  var res =  ((a + b) / 2) * h;	
+
+  var txt = "Ответ: " + res;	
+  alert(txt);
+
+}
+ </script>
+
+
+ </center>
+ </body>
+ </html>

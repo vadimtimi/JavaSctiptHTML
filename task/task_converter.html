@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>task_converter</title>
+</head>
+<body>
+<div id="usd"></div>
+<div id="eur"></div>
+<div id="err"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var euro = 64.50;
+	var dollar = 71.25;
+
+	var rub = prompt("Cколько рублей Вы хотите сконвертировать?");
+	
+	if(navigator.onLine) {
+		// Устройство в интернете
+		try {
+			$.getJSON("https://www.cbr-xml-daily.ru/daily_json.js", function(data) {
+			$('#usd').html(data.Valute.USD.Nominal+" Доллар -> "+ data.Valute.USD.Value +" Рублей");
+			$('#eur').html(data.Valute.EUR.Nominal+" Евро -> "+ data.Valute.EUR.Value +" Рублей");
+
+			euro = data.Valute.EUR.Value;
+			dollar = data.Valute.USD.Value;
+
+			dollar = parseFloat(dollar);
+			euro = parseFloat(euro);
+			rub = parseFloat(rub);
+
+			var ret1 = (rub ) / (dollar);
+			var ret2 = (rub ) / (euro);
+
+			var txt1 = "На " + rub + " руб. сегодня можно приобрести: " + ret1 + " USD";
+			var txt2 = "На " + rub + " руб. сегодня можно приобрести: " + ret2 + " EUR";
+
+			alert(txt1);
+			alert(txt2);
+
+			});
+		} catch (err) {
+			$('#err').html(err);
+		}
+	} else {
+			// Устройство не подключено к интернету
+			dollar = parseFloat(dollar);
+			euro = parseFloat(euro);
+			rub = parseFloat(rub);
+
+			var ret1 = (rub ) / (dollar);
+			var ret2 = (rub ) / (euro);
+
+			var txt1 = "На " + rub + " руб. можно приобрести: " + ret1 + " USD";
+			var txt2 = "На " + rub + " руб. можно приобрести: " + ret2 + " EUR";
+
+			alert(txt1);
+			alert(txt2);
+	}
+
+</script>
+</body>
+</html>
