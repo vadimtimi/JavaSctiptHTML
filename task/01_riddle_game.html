@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Загадки</title>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+
+  	var rebus_array = null;
+  	var answer_array = null;
+
+  	var game_count = 0;
+  	var game_success = 0;
+
+
+	// функции
+	function gameClick() {
+
+		//Очищаем ответы
+		setBox('p', "");
+
+		// заполняем переменные загадками ( TODO сделать из фала)
+		var rebus_00 = " Кто с высоких стройных сосен \n В нас нарочно шишку бросил, \n Прыгнул на другой сучок, \n Словно яркий огонек?" ;
+		var rebus_01 = " Все к нему скорей бегут \n Только слышат его звон \n По нему слова идут \n Это звонкий… " ;
+		var rebus_02 = " Она хозяйственно жужжит, \n Быстрей к себе домой летит. \n  Людям вкусный мед дала, \n  А зовут ее… " ;
+		var rebus_03 = "Шляпу носит круглый год \n Мал, и к дереву прилип \n Прячется от всех, как крот \n На полянке белый…" ;
+		var rebus_04 = "Ночью он не любит спать, \n Ему хочется гулять. \n Молоко из плошки пьет, \n Это наш домашний…" ;
+		var rebus_05 = "С волосами я дружу \n Их в порядок привожу. \n Благодарна мне прическа, \n А зовут меня…" ;
+		var rebus_06 = "Сидит дед, во сто шуб одет.\n  Кто его раздевает – тот слезы проливает." ;
+		var rebus_07 = "Меня ждут – не дождутся, \n а как увидят – разбегутся" ;
+		var rebus_08 = "Стукнешь о стенку – \n А я отскочу. \n Бросишь на землю – \n А я поскачу. \n Я из ладоней в ладони лечу \n – Смирно лежать не хочу" ;
+		var rebus_09 = "Не галстук он, не воротник, \n А шею обнимать привык. \n Он помогает нам всегда, \n Когда приходят холода." ;
+
+		// заполняем переменные загадками ( TODO сделать из фала)
+		var answer_00 = "белка";
+		var answer_01 = "телефон";
+		var answer_02 = "пчела";
+		var answer_03 = "гриб";
+		var answer_04 = "кот";
+		var answer_05 = "расческа";
+		var answer_06 = "лук";
+		var answer_07 = "дождь";
+		var answer_08 = "мяч";
+		var answer_09 = "шарф";
+
+		// инициализация массива вопроса и ответа
+		rebus_array = new Array(rebus_00, rebus_01 , rebus_02, rebus_03, rebus_04, rebus_05, rebus_06, rebus_07, rebus_08, rebus_09);
+		answer_array = new Array(answer_00, answer_01, answer_02, answer_03, answer_04, answer_05, answer_06, answer_07, answer_08, answer_09);
+
+		// инициализируем загадку
+		var i_answer = getRabdomInt(rebus_array.length);
+		var rebus = getRebus(i_answer);
+
+		// спрашиваем у игрока ответ
+		var ans_user = prompt(rebus,'Введите ваш ответ');
+
+		// анализируем ответ игрока
+		if( comparAnsver(ans_user, getAnswer(i_answer)) == true) {
+			alert("Поздравляю, Вы правильно отгадали.");
+			game_success ++;
+		} else {
+
+		    alert("Это не правильно. Попробуйте еще раз.");
+		}
+
+		game_count ++;
+
+		var text_count_game = "Количество игр: "+ game_count +", Количесво побед: " + game_success;
+		setBox("H2", text_count_game);
+
+		var p = document.querySelector('p');
+		textIt(p, "Правильный ответ : " + rebus, getAnswer(i_answer));
+	}
+	
+	function getRebus(id) {
+		return rebus_array[id];
+	}
+	function getAnswer(id) {
+		return answer_array[id];
+	}
+	function getRabdomInt(max) {
+		return Math.floor(Math.random() * max)
+	}
+	function comparAnsver(user_answer, answer_game){
+		var ret = (user_answer.toUpperCase() === answer_game.toUpperCase());
+		return ret;
+	}
+	function textIt(element, text, ok) {
+	    var elem = document.createElement('a');
+	    elem.href = '#';
+	    var textNode = document.createTextNode(text);
+	    elem.onclick = function () {
+	        var textNode = document.createTextNode(ok);
+	        elem.parentNode.replaceChild(textNode, elem);
+	        return false
+	    }
+	    elem.appendChild(textNode);
+	    element.appendChild(elem);
+	}
+
+	function setBox(elementID, text)
+	{
+	    document.querySelector(elementID).innerHTML = text;
+	}
+
+</script>
+</head>
+<body>
+	<div style="text-align: center">
+		<H1>Нажатие кнопки Играть, чтобы начать отгадывать загадку</H1>
+		<H2>Количество игр: 0, Количесво побед: 0</H2>
+	</div> 
+	<div id="ex1"></div>
+	<FORM NAME="Test">
+	   	<div style="text-align: center">
+			<input lign="center" type="button" onclick="gameClick()" value="Играть"/>
+			<p align=justify >
+		</div> 
+	</FORM>
+</body>
+</html>

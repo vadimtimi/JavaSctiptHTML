@@ -1,0 +1,46 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Игра с компьютером</title>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+    var answer = parseInt(Math.random() * 100);
+    var user = "User1"
+    var userAnswer = 0;
+    while (true) {
+
+      if(user == "UserComp") {
+        userAnswer =  parseInt(Math.random() * 100);
+      }
+      else
+      {
+        userAnswer = prompt(user + " Игрок \n Угадайте число от 0 до 100. Для выхода введите 'q'", '');
+      }
+      
+      if (userAnswer == "q") // Если игрок ввёл "q"
+      {
+        break; // Прерываем цикл
+      } else // Иначе
+        userAnswer = parseInt(userAnswer); // Приводим введённое значение к целому числу
+      if (userAnswer > answer) { // Если число больше
+       alert(user + " Игрок \n Ваше число "+ userAnswer + " больше загаданного"); // Выводим алерт
+      } else if (userAnswer < answer) { // Если число меньше
+        alert(user + " Игрок \n Ваше число "+ userAnswer + " меньше загаданного"); // Выводим алерт
+      } else if (userAnswer == answer) { // Если угадали число
+      alert(user + " Игрок \n Вы угадали! Было загадано число: " + answer); // Выводим победный алерт
+        break; // Прерываем цикл
+      } else if (userAnswer != "q") { // Если пользователь ничего не ввёл или ввёл не число
+        alert(user + " Игрок \n Необходимо ввести число"); // Выводим алерт
+      }
+
+      user = (user == "User1") ? "UserComp" : "User1";
+    }
+  </script>
+ </head>
+ <body text="blue">
+  <p>Игра с компьютером</p>
+ </body>
+</html>
+
